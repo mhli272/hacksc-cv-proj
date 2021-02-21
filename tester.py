@@ -5,8 +5,8 @@ import calcDist
 import face_detection
 
 def main():
-    image = "testing-pictures/close_left.jpg"
-    image2 = "testing-pictures/close_right.jpg"
+    image = "testing-pictures/far_left1.jpg"
+    image2 = "testing-pictures/far_right1.jpg"
     photoOneCoords = face_detection.face_detect(image)
     photoTwoCoords = face_detection.face_detect(image2)
 

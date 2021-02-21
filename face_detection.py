@@ -35,8 +35,10 @@ def face_detect(filename):
             cv2.circle(image, (centerX, centerY), 5, (0,0,255), 2)
             photoCoords.append((centerX,centerY))
 
-    cv2.imwrite("Result.jpg", image)
+
     cv2.imshow("Result.jpg", image)
+    cv2.imwrite("Result.jpg", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     return photoCoords
+
