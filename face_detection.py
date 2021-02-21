@@ -40,11 +40,3 @@ def face_detect(filename):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     return photoCoords
-
-
-
-def main():
-    print(face_detect("pic3.jpg"))
-
-
-main()

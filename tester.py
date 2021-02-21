@@ -5,33 +5,40 @@ import calcDist
 import face_detection
 
 def main():
-    image = "pic1.jpg"
-    image2 = "pic2.jpg"
+    image = "testing-pictures/close_left.jpg"
+    image2 = "testing-pictures/close_right.jpg"
     photoOneCoords = face_detection.face_detect(image)
     photoTwoCoords = face_detection.face_detect(image2)
 
+
+    camDist = 0.127
+    picLength = 600
+    picHeight = 1134
+    LRangle = 30.26
+    UDangle = 30.47
+
+    combinedCoords = []
+    photoOneCoords.sort()
+    photoTwoCoords.sort()
     print(photoOneCoords)
     print(photoTwoCoords)
 
-    camDist = 1
-    picLength = 1
-    picHeight = 1
-    LRangle = 60
-    UDangle = 60
-
-    combinedCoords = []
 
     for i in range(len(photoOneCoords)):
         combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i], camDist, picLength, picHeight, LRangle, UDangle))
 
     distance = 6
+    print(combinedCoords)
 
     dict = {}
     for i in range(len(photoOneCoords)):
         dict[photoOneCoords[i]] = combinedCoords[i]
     notDistanced = calcDist.checkAll(dict, distance)
 
-    print("not Distanced:")
+    if(len(notDistanced) != 0):
+        print("not Distanced:")
+    else:
+        print("Distanced!")
     print(notDistanced)
 
 

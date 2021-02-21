@@ -37,18 +37,14 @@ def calcDistance(coords1, coords2):
 
 #s is a dictionary with 2d pixel coords (double tuple) as keys and 3d coords (double tuple) as value
 #dis is the minimum distance that we want the people to be apart
-#we should choose 
+#we should choose the left image as protocol
 def checkAll(s, dis):
-    ans = {}
-    temp = s
-    for i in s.copy():
-        temp.pop(i)
-        for j in temp:
-            if(calcDistance(s[i], s[j]) <= dis):
-                ans += j
-                ans += i
+    ans = set()
+    for i in s:
+        for j in s:
+            if(i != j):
+                if(calcDistance(s[i], s[j]) <= dis):
+                    ans.add(j)
+                    ans.add(i)
     return ans
-
-#testing
-print(positionToCam((150, 300), (148, 300), 2, 200, 400, 30, 30))
 
