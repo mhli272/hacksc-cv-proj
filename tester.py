@@ -5,8 +5,8 @@ import calcDist
 import face_detection
 
 def main():
-    image = "testing-pictures/far_left1.jpg"
-    image2 = "testing-pictures/far_right1.jpg"
+    image = "testing-pictures/close_left.jpg"
+    image2 = "testing-pictures/close_right.jpg"
     photoOneCoords = face_detection.face_detect(image)
     photoTwoCoords = face_detection.face_detect(image2)
 
@@ -37,7 +37,8 @@ def main():
 
     if(len(notDistanced) != 0):
         print("not Distanced:")
-        face_detection.draw_Rect(image, photoOneCoords)
+        face_detection.draw_Rect(image)
+
     else:
         print("Distanced!")
 
