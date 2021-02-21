@@ -59,7 +59,7 @@ def main():
             if CLASSES[idx] != "person":
                 continue
 
-            person2_box = person2_detections[0, 0, i, 3:7] * np.array([W, H, W, H])
+            person2_box = person2_detections[0, 0, i, 3:7] * np.array([W2, H2, W2, H2])
             (startX, startY, endX, endY) = person2_box.astype("int")
             centerX = int(startX + ((endX - startX) / 2))
             centerY = int(startY + ((endY - startY) / 2))
