@@ -9,7 +9,7 @@ detector = cv2.dnn.readNetFromCaffe(prototxt=protopath, caffeModel=modelpath)
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chari", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
 def main():
-    image = cv2.imread("people.jpg")
+    image = cv2.imread("people_line.jpg")
     image = imutils.resize(image, width=600)
 
     (H, W) = image.shape[:2]
@@ -19,6 +19,7 @@ def main():
     detector.setInput(blob)
     person_detections = detector.forward()
 
+    coordinates = []
     for i in np.arange(0, person_detections.shape[2]):
         confidence = person_detections[0, 0, i, 2]
         if confidence > 0.5:
@@ -29,8 +30,12 @@ def main():
 
             person_box = person_detections[0, 0, i, 3:7] * np.array([W, H, W, H])
             (startX, startY, endX, endY) = person_box.astype("int")
+            centerX = int(startX + ((endX - startX) / 2))
+            centerY = int(startY + ((endY - startY) / 2))
+            cv2.circle(image, (centerX, centerY), 5, (0,0,255), 2)
+            coordinates.append((centerX,centerY))
+    print(coordinates)
             
-            cv2.rectangle(image, (startX, startY), (endX, endY), (0,0,255), 2)
 
     cv2.imshow("Results", image)
     cv2.waitKey(0)
