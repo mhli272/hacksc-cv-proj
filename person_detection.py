@@ -82,7 +82,7 @@ def main():
     combinedCoords = []
 
     for i in range(len(photoOneCoords)):
-        combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i][0],camDist, picLength, picHeight, LRangle, UDangle))
+        combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i], camDist, picLength, picHeight, LRangle, UDangle))
 
     distance = 6
 
@@ -90,7 +90,10 @@ def main():
     for i in range(len(photoOneCoords)):
         dict[photoOneCoords[i]] = combinedCoords[i]
     notDistanced = calcDist.checkAll(dict, distance)
-    
+
+    print("not Distanced:")
+    print(notDistanced)
+
     cv2.imshow("Results", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
