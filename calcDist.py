@@ -41,7 +41,7 @@ def calcDistance(coords1, coords2):
 def checkAll(s, dis):
     ans = {}
     temp = s
-    for i in s:
+    for i in s.copy():
         temp.pop(i)
         for j in temp:
             if(calcDistance(s[i], s[j]) <= dis):
