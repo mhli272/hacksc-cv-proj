@@ -37,7 +37,8 @@ def main():
 
     if(len(notDistanced) != 0):
         print("not Distanced:")
-        face_detection.draw_Rect(image, photoOneCoords)
+        face_detection.draw_Rect(image)
+
     else:
         print("Distanced!")
 
