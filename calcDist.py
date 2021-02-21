@@ -42,7 +42,7 @@ def checkAll(s, dis):
     ans = {}
     temp = s
     for i in s:
-        temp -= i
+        temp.pop(i)
         for j in temp:
             if(calcDistance(s[i], s[j]) <= dis):
                 ans += j
