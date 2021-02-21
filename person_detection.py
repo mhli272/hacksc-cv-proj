@@ -73,22 +73,29 @@ def main():
 
     print(photoTwoCoords)
 
-    cv2.imwrite("Results1.jpg", image)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
-    cv2.imwrite("Results2.jpg", image2)
-
-
-    #start calculating the 3D dimensions
-    camDist = 0.147
+    camDist = 1
+    picLength = 1
+    picHeight = 1
     LRangle = 60
-    UDangle = 50
-    #edit later
-    #pLength, pHeight = Image.open("Results1.jpg")
+    UDangle = 60
 
-    #sort them first to match each index up
-    photoOneCoords.sort()
-    photoTwoCoords.sort()
+    combinedCoords = []
 
+    for i in range(len(photoOneCoords)):
+        combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i][0],camDist, picLength, picHeight, LRangle, UDangle))
+
+    distance = 6
+
+    dict = {}
+    for i in range(len(photoOneCoords)):
+        dict[photoOneCoords[i]] = combinedCoords[i]
+    notDistanced = calcDist.checkAll(dict, distance)
+    
+    cv2.imshow("Results", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    cv2.imshow("Results", image2)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 main()
