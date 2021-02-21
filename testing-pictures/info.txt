@@ -1,3 +1,12 @@
 left1 & right1:
 	camera distance: 0.127 meters
-	camera left right angle: 
+	camera left right angle: 30.26
+	camera up down angle: 30.47 degrees
+close_left & close right:
+	camera distance: 0.127 meters
+	camera left right angle: 30.26
+	camera up down angle: 30.47 degrees
+far_left & far_right:
+	camera distance: 0.127 meters
+	camera left right angle: 30.26
+	camera up down angle: 30.47 degrees

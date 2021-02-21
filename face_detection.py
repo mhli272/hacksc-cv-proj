@@ -5,6 +5,8 @@ import calcDist
 
 
 #takes in filename, and runs face detection on the file
+#makes a picture in the directory called Result.jpg with the result
+#outputs the coords for all the faces as well
 def face_detect(filename):
     
     protopath = "deploy.prototxt"
@@ -39,7 +41,7 @@ def face_detect(filename):
 
 
 def main():
-    print(face_detect("pic1.jpg"))
+    print(face_detect("pic3.jpg"))
 
 
 main()
