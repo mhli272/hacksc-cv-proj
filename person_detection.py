@@ -14,11 +14,9 @@ def main():
 
 #distance between pictures is 0.127 meters
 
-    image = cv2.imread("left.jpg")
-
     image = cv2.imread("IMG_0049.jpg")
     image = imutils.resize(image, width=600)
-    image2 = cv2.imread("people.jpg")
+    image2 = cv2.imread("people_line.jpg")
     image2 = imutils.resize(image2, width=600)
     (H, W) = image.shape[:2]
     (H2, W2) = image2.shape[:2]
@@ -52,7 +50,7 @@ def main():
     detector2.setInput(blob2)
     person2_detections = detector2.forward()
 
-    # detecting the people of the first picture
+    # detecting the people of the second picture
     for i in np.arange(0, person2_detections.shape[2]):
         confidence = person2_detections[0, 0, i, 2]
         if confidence > 0.5:
@@ -70,11 +68,12 @@ def main():
 
     print(photoTwoCoords)
 
-    cv2.imwrite("Results.jpg", image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    cv2.imshow("Results", image2)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cv2.imwrite("Results1.jpg", image)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    cv2.imwrite("Results2.jpg", image2)
+
+
+
 
 main()
