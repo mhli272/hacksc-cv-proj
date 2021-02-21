@@ -1,9 +1,17 @@
 import math
 #Calculates the 3D position of the object to the camera
-#dx is left right
-#dy is front back
-#dz is up down
-#x1, y1 is left camera; x2, y2 is right camera
+#outputs:
+#   dx is the left right distance of the object to the centerline of the cameras
+#   dy is the front back distance from the object to the cameras
+#   dz is tje up down distance from the object to the cameras
+#inputs:
+#    x1, y1 is the pixel coord of the object with the left camera
+#    x2, y2 is the pixel coord of the object with the right camera
+#    camDist is the distance between the two cameras
+#    picLength is the legnth of the picture in pixels
+#    picHeight is the height of the picture in pixels
+#    LRangle is half of the left-right view angle of the camera
+#    UDangle is half of the up-down view angle of the camera
 def positionToCam(x1, y1, x2, y2, camDist, picLength, picHeight, LRangle, UDangle):
     a = (x1-x2)/picLength
     #the y distance from object to camera
@@ -14,29 +22,28 @@ def positionToCam(x1, y1, x2, y2, camDist, picLength, picHeight, LRangle, UDangl
     dz = (1-((y1+y2)/(2*picHeight))-0.5)*2*dy*math.tan(UDangle*math.pi/180)
     return dx, dy, dz
 
-#calculates the distance between two 3D coords
-def calcDistance(x1, y1, z1, x2, y2, z2):
-    a = math.pow(x1-x2, 2)
-    b = math.pow(y1-y2, 2)
-    c = math.pow(z1-z2, 2)
-    return math.sqrt(a+b+c)
+
+#calculates the distance between two 3D coords with 6 doubles as input
+def calcDistance(coords1, coords2):
+    sum = 0
+    for a in coords1:
+        for b in coords2:
+            sum += math.pow(a-b, 2)
+    return math.sqrt(sum)
+
+
 
 #s is a dictionary with 2d pixel coords (double tuple) as keys and 3d coords (double tuple) as value
 def checkAll(s, dis):
     ans = {}
-    temp = s;
+    temp = s
     for i in s:
         temp -= i
         for j in temp:
-            x1 = i[0]
-            y1 = i[1]
-            z1 = i[2]
-            x2 = j[0]
-            y2 = j[1]
-            z2 = j[2]
-            if(calcDistance(x1, y1, z1, x2, y2, z2) <= dis):
+            if(calcDistance(s[i], s[j]) <= dis):
                 ans += j
                 ans += i
+    return ans
 
 
 #testing
