@@ -5,14 +5,16 @@ import math
 #   dy is the front back distance from the object to the cameras
 #   dz is tje up down distance from the object to the cameras
 #inputs:
-#    x1, y1 is the pixel coord of the object with the left camera
-#    x2, y2 is the pixel coord of the object with the right camera
+#    coords1(x1, y1) is the pixel coord of the object with the left camera
+#    coords2(x2, y2) is the pixel coord of the object with the right camera
 #    camDist is the distance between the two cameras
 #    picLength is the legnth of the picture in pixels
 #    picHeight is the height of the picture in pixels
 #    LRangle is half of the left-right view angle of the camera
 #    UDangle is half of the up-down view angle of the camera
-def positionToCam(x1, y1, x2, y2, camDist, picLength, picHeight, LRangle, UDangle):
+def positionToCam(coords1, coords2, camDist, picLength, picHeight, LRangle, UDangle):
+    x1, y1 = coords1
+    x2, y2 = coords2
     a = (x1-x2)/picLength
     #the y distance from object to camera
     dy = (1/a)*camDist/(2*math.tan(LRangle*math.pi/180))
@@ -34,6 +36,8 @@ def calcDistance(coords1, coords2):
 
 
 #s is a dictionary with 2d pixel coords (double tuple) as keys and 3d coords (double tuple) as value
+#dis is the minimum distance that we want the people to be apart
+#we should choose 
 def checkAll(s, dis):
     ans = {}
     temp = s
@@ -46,5 +50,5 @@ def checkAll(s, dis):
     return ans
 
 #testing
-print(positionToCam(150, 300, 148, 300, 2, 200, 400, 30, 30))
+print(positionToCam((150, 300), (148, 300), 2, 200, 400, 30, 30))
 
