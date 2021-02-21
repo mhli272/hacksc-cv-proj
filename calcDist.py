@@ -45,7 +45,6 @@ def checkAll(s, dis):
                 ans += i
     return ans
 
-
 #testing
 print(positionToCam(150, 300, 148, 300, 2, 200, 400, 30, 30))
 

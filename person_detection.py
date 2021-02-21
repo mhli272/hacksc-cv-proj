@@ -9,8 +9,10 @@ detector = cv2.dnn.readNetFromCaffe(prototxt=protopath, caffeModel=modelpath)
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chari", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
 def main():
-    image = cv2.imread("people_line.jpg")
-    image = imutils.resize(image, width=600)
+
+#distance between pictures is 0.127 meters
+
+    image = cv2.imread("left.jpg")
 
     (H, W) = image.shape[:2]
     
@@ -37,7 +39,7 @@ def main():
     print(coordinates)
             
 
-    cv2.imshow("Results", image)
+    cv2.imwrite("Results.jpg", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
