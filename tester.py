@@ -5,12 +5,12 @@ import calcDist
 import face_detection
 
 def main():
-    image = "testing-pictures/far_left2.jpg"
-    image2 = "testing-pictures/far_right2.jpg"
+    image = "testing-pictures/close_left.jpg"
+    image2 = "testing-pictures/close_right.jpg"
 
     #far_left2 + far_right2: 0.368
     #everything else: 0.127
-    camDist = 0.368
+    camDist = 0.127
     picLength = 600
     picHeight = 1134
     LRangle = 30.26
