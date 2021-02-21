@@ -25,8 +25,14 @@ def main():
     for i in range(len(photoOneCoords)):
         combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i], camDist, picLength, picHeight, LRangle, UDangle))
 
-    distance = 3
-    print(combinedCoords)
+    print("Those are the 3D positions of the people in this picture wtih respect to the cameras:")
+    xyz = ["x", "y", "z"]
+    for i in range(0, len(combinedCoords)):
+        print("Person " + str(i+1) +": ")
+        for j in range(0, len(combinedCoords[i])):
+            print(xyz[j] + ": " + str(combinedCoords[i][j]))
+    distance = input("Enter a distance for social distancing(in meters): ")
+    distance = float(distance)
 
     dict = {}
     for i in range(len(photoOneCoords)):
