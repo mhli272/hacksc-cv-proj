@@ -9,7 +9,7 @@ detector = cv2.dnn.readNetFromCaffe(prototxt=protopath, caffeModel=modelpath)
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chari", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
 def main():
-    image = cv2.imread("people.jpg")
+    image = cv2.imread("people_line.jpg")
     image = imutils.resize(image, width=600)
 
     (H, W) = image.shape[:2]
