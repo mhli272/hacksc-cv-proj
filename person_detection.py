@@ -19,6 +19,7 @@ def main():
     detector.setInput(blob)
     person_detections = detector.forward()
 
+    coordinates = []
     for i in np.arange(0, person_detections.shape[2]):
         confidence = person_detections[0, 0, i, 2]
         if confidence > 0.5:
@@ -29,8 +30,12 @@ def main():
 
             person_box = person_detections[0, 0, i, 3:7] * np.array([W, H, W, H])
             (startX, startY, endX, endY) = person_box.astype("int")
+            centerX = int(startX + ((endX - startX) / 2))
+            centerY = int(startY + ((endY - startY) / 2))
+            cv2.circle(image, (centerX, centerY), 5, (0,0,255), 2)
+            coordinates.append((centerX,centerY))
+    print(coordinates)
             
-            cv2.rectangle(image, (startX, startY), (endX, endY), (0,0,255), 2)
 
     cv2.imshow("Results", image)
     cv2.waitKey(0)
