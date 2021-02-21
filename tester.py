@@ -7,16 +7,18 @@ import face_detection
 def main():
     image = "testing-pictures/far_left2.jpg"
     image2 = "testing-pictures/far_right2.jpg"
-    photoOneCoords = face_detection.face_detect(image)
-    photoTwoCoords = face_detection.face_detect(image2)
 
-
+    #far_left2 + far_right2: 0.368
+    #everything else: 0.127
     camDist = 0.368
     picLength = 600
     picHeight = 1134
     LRangle = 30.26
     UDangle = 30.47
 
+
+    photoOneCoords = face_detection.face_detect(image)
+    photoTwoCoords = face_detection.face_detect(image2)
     combinedCoords = []
     print(photoOneCoords)
     print(photoTwoCoords)

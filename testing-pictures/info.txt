@@ -14,7 +14,7 @@ far_left1 & far_right1:
 	camera distance: 0.127 meters
 	camera left right angle: 30.26
 	camera up down angle: 30.47 degrees
-far_left2 & far_rigth2:
+far_left2 & far_right2:
 	camera distance: 0.368
 	camera left right angle: 30.26
 	camera up down angle: 30.47 degrees
