@@ -18,8 +18,6 @@ def main():
     UDangle = 30.47
 
     combinedCoords = []
-    photoOneCoords.sort()
-    photoTwoCoords.sort()
     print(photoOneCoords)
     print(photoTwoCoords)
 
@@ -27,7 +25,7 @@ def main():
     for i in range(len(photoOneCoords)):
         combinedCoords.append(calcDist.positionToCam(photoOneCoords[i], photoTwoCoords[i], camDist, picLength, picHeight, LRangle, UDangle))
 
-    distance = 6
+    distance = 3
     print(combinedCoords)
 
     dict = {}
